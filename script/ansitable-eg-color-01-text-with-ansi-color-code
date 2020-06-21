@@ -1,0 +1,33 @@
+#!perl
+
+use 5.010001;
+use strict;
+use warnings;
+
+use Text::ANSITable;
+use Term::ANSIColor;
+
+my $t = Text::ANSITable->new;
+$t->columns([qw/is_col1_bool col2_num col3_str/]);
+$t->add_row([1, 10, "ten"]);
+$t->add_row([1, 20, "twenty"]);
+$t->add_row([1, 30, colored(["bright_red"], "thirty (bright_red)")]);
+$t->add_row([0, 40, "forty"]);
+$t->add_row([1, 50, "fifty"]);
+$t->add_row([0, 60, "sixty"]);
+$t->add_row([1, 70, "seventy"]);
+$t->add_row([1, 80, "eighty"]);
+$t->add_row([1, 90, colored(["bright_magenta on_blue"], "ninety (bright_magenta on_blue)")]);
+
+print $t->draw;
+
+# ABSTRACT: Text containing ANSI color code
+
+=head1 SYNOPSIS
+
+ % ansitable-eg-color-01-text-with-ansi-color-code
+
+=head1 DESCRIPTION
+
+This example script shows how L<Text::ANSITable> is able to handle text with
+ANSI color codes.
